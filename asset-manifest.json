@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shushma-portfolio/static/css/main.b422b34f.css",
+    "main.js": "/shushma-portfolio/static/js/main.0a3aaf5c.js",
+    "static/js/453.6c411d42.chunk.js": "/shushma-portfolio/static/js/453.6c411d42.chunk.js",
+    "index.html": "/shushma-portfolio/index.html",
+    "main.b422b34f.css.map": "/shushma-portfolio/static/css/main.b422b34f.css.map",
+    "main.0a3aaf5c.js.map": "/shushma-portfolio/static/js/main.0a3aaf5c.js.map",
+    "453.6c411d42.chunk.js.map": "/shushma-portfolio/static/js/453.6c411d42.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b422b34f.css",
+    "static/js/main.0a3aaf5c.js"
+  ]
+}
