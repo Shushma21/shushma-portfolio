@@ -1,102 +1,131 @@
-import { useState,useEffect } from "react";
-import { Code, Home, Mail,List,User,ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Code, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { ReactTyped } from 'react-typed';
+import profilePic from "./assets/profile.jpeg";
+import DetailsSection from './components/DetailsSection';
+import ContactForm from "./components/ContactMe";
 
-export default function Portfolio(){
-  const [activeSection,setActiveSection] = useState('home');
-  const [hoverSection,setHoverSection]   = useState(null);
+export default function Portfolio() {
+  const [step, setStep] = useState(1);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   useEffect(() => {
-    const handleKeyPress = (event) =>{
-      if(event.key === '1') setActiveSection('home');
-      if(event.key === '2') setActiveSection('about');
-      if(event.key === '3') setActiveSection('projects');
-      if(event.key === '4') setActiveSection('contact');
-    };
+    if (step === 2) {
+      const timer = setTimeout(() => setStep(3), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
 
-    window.addEventListener('keydown',handleKeyPress);
-    return () => window.removeEventListener('keydown',handleKeyPress);
-  },[]);
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 to-black text-green-300 font-mono">
+      <header className="p-4 border-b border-green-500 flex items-center justify-between">
+        {step >= 1 && (
+          <h1 className="text-2xl flex items-center">
+            <Code className="mr-2" />
+            <ReactTyped
+              strings={["Shushma's Portfolio"]}
+              typeSpeed={20}
+              showCursor={false}
+              onComplete={() => setStep(2)}
+            />
+          </h1>
+        )}
 
-  return(
-    <div className="min-h-screen flex flex-col bg-gray-900 text-green-400 font-mono">
-      <header className="p-4 border-green-500 flex justify-between items-center">
-        <h1 className="text-xl flex items-center">
-          <Code className = "mr-2"/>Shushma's Portfolio
-        </h1>
-        <nav className="flex gap-4">
-          {['home','about','projects','contact'].map((section,index)=>(
-            <div key={section} className="relative">
-              <button 
-                onClick={() => setActiveSection(section)} 
-                onMouseEnter={()=>setHoverSection(section)} 
-                onMouseLeave={()=>setHoverSection(null)}
-                className={`p-2 rounded-lg transition-all 
-                  ${activeSection === section ? 'bg-green-500 text-gray-900':'hover:bg-green-700'}`}
+        {step >= 2 && (
+          <nav className="flex gap-4">
+            {['home', 'about', 'projects', 'contact'].map((section, index) => (
+              <motion.button
+                key={section}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.5 }}
+                className="p-2 rounded-lg border-2 border-green-500 hover:bg-green-500 hover:text-black"
+                onClick={() => section === 'contact' && setShowContactForm(true)}
               >
-                {section === 'home' && <Home size={20}/>}
-                {section === 'about' && <User size={20}/> }
-                {section === 'projects' && <List size={20}/>}
-                {section === 'contact' && <Mail size={20}/>}
-              </button>
-              {hoverSection === section &&(
-                <div className="absolute top-full mt-2 p-2 bg-green-500 text-gray-900 rounded-lg shadow-lg text-sm">
-                  {section.charAt(0).toUpperCase()+section.slice(1)}
-                </div>
-              )}
-            </div>
-          ))}
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </motion.button>
+            ))}
           </nav>
-          </header>      
-          <div className="flex-grow p-4">
-            <main className="p-4">
-              <motion.div initial={{opacity:0}} 
-                        animate={{opacity:1}} 
-                        >
-                {activeSection === 'home' && (
-                  <div>
-                    <div className="border border-green-500 p-4 rounded-lg mb-6">
-                      Hi! I am 
-                      <p className="text-2xl"><b>Shushma N</b></p>
-                      <p className="flex items-center">
-                        <ChevronRight className="mr-2" />
-                        Software Engineer
-                      </p> 
-                      <ul className="mt-5 space-y-2">
-                        <li className="flex items-center"><b className="w-40 flex justify-between">GitHub <span className="mr-2">:</span></b> <a href="https://github.com/Shushma21" target="_blank"  rel="noopener noreferrer"  className="underline">Visit my github</a></li>
-                        <li className="flex items-center"><b className="w-40 flex justify-between">linkedin <span className="mr-2">:</span></b> <a href="https://www.linkedin.com/in/shushma-n/" target="_blank"  rel="noopener noreferrer"  className="underline">Visit my linkedin</a></li>
-                        <li className="flex items-center"><b className="w-40 flex justify-between">Phone <span className="mr-2">:</span> </b> +91 8792389001</li>
-                        <li className="flex items-center"><b className="w-40 flex justify-between">Email <span className="mr-2">:</span></b> <a href="mailto:shushma.09072001@gmail.com" className="underline">Email Me</a></li>
-                      </ul>                   
-                    </div>
-                    <div className="border border-green-500 p-4 rounded-lg mb-6">
-                      <p className="text-xl font-bold mb-2">Tech Stack Used To Create My Portfolio Website:</p>
-                      <ul className="list-disc pl-5">
-                        <li><b>Language:</b> JavaScript (React)</li>
-                        <li><b>Libraries:</b> Lucide Icons, Framer Motion, Tailwind CSS</li>
-                        <li><b>Framework:</b> React.js</li>
-                      </ul>
-                    </div>
-                    <div className="border border-green-500 p-4 rounded-lg mb-6">
-                    <p className="mt-2">To know more about me please follow the below instructions...</p>
-                      <div className="justify-center mt-4">
-                        <p>Press 2 to navigate to the About page</p>
-                        <p>Press 3 to navigate to the Projects page</p>
-                        <p>Press 4 to navigate to the Contact page</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {activeSection === 'about' && <div>About Me : Passionate developer with experience in Backend & Frontend technologies</div>}
-                {activeSection === 'projects' && <div>Projects : A collection  of my best coding practices, showcasing  my skills and  creativity</div>}
-                {activeSection === 'contact' && <div>Contact Me: Reach out to me via Email or Phone</div>}
-              </motion.div>
-            </main>
-          </div>
-    <footer className="p-4 border-t border-green-500 text-center">
-    © 2025 Shushma N | Built with React
-    </footer>
-    </div>
-  )
-}
+        )}
+      </header>
 
+      <main className="flex-grow p-6">
+        {step >= 3 && (
+          <motion.img
+            src={profilePic}
+            alt="Shushma N"
+            className="w-32 h-32 rounded-full border-4 border-green-500 mx-auto"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            onAnimationComplete={() => setStep(4)}
+          />
+        )}
+
+        {step >= 4 && (
+          <div className="text-center mt-6">
+            <p className="text-2xl">
+              <ReactTyped
+                strings={["Hi! I'm Shushma N"]}
+                typeSpeed={20}
+                showCursor={false}
+                onComplete={() => setStep(5)}
+              />
+            </p>
+          </div>
+        )}
+
+        {step >= 5 && (
+          <div className="text-center mt-3">
+            <p className="flex items-center justify-center text-lg">
+              <ChevronRight className="mr-2" />
+              <ReactTyped
+                strings={["Software Engineer"]}
+                typeSpeed={20}
+                showCursor={false}
+                onComplete={() => setStep(6)}
+              />
+            </p>
+          </div>
+        )}
+
+        {step >= 6 && (
+          <div className="grid grid-cols-2 gap-6 p-6">
+            <div className="border-2 border-green-500 p-4 rounded-lg">
+              <h2 className="text-xl font-bold mb-3">
+                <ReactTyped
+                  strings={["Tech Stack Used"]}
+                  typeSpeed={20}
+                  showCursor={false}
+                  onComplete={() => setStep(7)}
+                />
+              </h2>
+              <ul className="list-disc list-inside">
+                {["⚛️ React", "✨ Tailwind CSS", "📦 Vite (for fast development)", "🎯 Framer Motion (for animations)", "✍️ React Typed (for typing effects)", "🌿 Lucide Icons"].map((tech, index) => (
+                  step >= 7 + index && (
+                    <li key={tech}>
+                      <ReactTyped
+                        strings={[tech]}
+                        typeSpeed={20}
+                        showCursor={false}
+                        onComplete={() => setStep(8 + index)}
+                      />
+                    </li>
+                  )
+                ))}
+              </ul>
+            </div>
+            {step >= 13 && <DetailsSection />}
+          </div>
+        )}
+
+        {showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
+      </main>
+
+      <footer className="p-4 border-t border-green-500 text-center">
+        © 2025 Shushma N | Built with React
+      </footer>
+    </div>
+  );
+}
