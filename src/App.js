@@ -99,7 +99,7 @@ export default function Portfolio() {
                   typeSpeed={20}
                   showCursor={false}
                   onComplete={() => setStep(7)}
-                />
+                /> 
               </h2>
               <ul className="list-disc list-inside">
                 {["⚛️ React", "✨ Tailwind CSS", "📦 Vite (for fast development)", "🎯 Framer Motion (for animations)", "✍️ React Typed (for typing effects)", "🌿 Lucide Icons"].map((tech, index) => (

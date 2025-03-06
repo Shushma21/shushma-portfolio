@@ -34,7 +34,7 @@ export default function ContactForm({ onClose }) {
             onClick={onClose}
             className="absolute top-[-60px] right-[-1px] text-green-300 hover:text-green-500"
           >
-            ✖
+            ✖ 
           </button>
           <input
             type="text"

@@ -7,7 +7,7 @@ export default function DetailsSection() {
   return (
     <div className="border-2 border-green-500 p-4 rounded-lg">
       <h2 className="text-xl font-bold mb-3">
-        <ReactTyped 
+        <ReactTyped  
           strings={["Details"]} 
           typeSpeed={20}  
           showCursor={false} 
