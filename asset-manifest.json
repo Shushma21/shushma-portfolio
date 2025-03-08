@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/shushma-portfolio/static/css/main.3ce1db1b.css",
-    "main.js": "/shushma-portfolio/static/js/main.ef2ded2d.js",
+    "main.css": "/shushma-portfolio/static/css/main.dfabaa7d.css",
+    "main.js": "/shushma-portfolio/static/js/main.5c4dc335.js",
     "static/js/453.6c411d42.chunk.js": "/shushma-portfolio/static/js/453.6c411d42.chunk.js",
+    "static/media/shushma_CV.pdf": "/shushma-portfolio/static/media/shushma_CV.6a28cdd42f00e24a2725.pdf",
     "static/media/profile.jpeg": "/shushma-portfolio/static/media/profile.00dec5c387256f1d5d59.jpeg",
     "index.html": "/shushma-portfolio/index.html",
-    "main.3ce1db1b.css.map": "/shushma-portfolio/static/css/main.3ce1db1b.css.map",
-    "main.ef2ded2d.js.map": "/shushma-portfolio/static/js/main.ef2ded2d.js.map",
+    "main.dfabaa7d.css.map": "/shushma-portfolio/static/css/main.dfabaa7d.css.map",
+    "main.5c4dc335.js.map": "/shushma-portfolio/static/js/main.5c4dc335.js.map",
     "453.6c411d42.chunk.js.map": "/shushma-portfolio/static/js/453.6c411d42.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ce1db1b.css",
-    "static/js/main.ef2ded2d.js"
+    "static/css/main.dfabaa7d.css",
+    "static/js/main.5c4dc335.js"
   ]
 }
