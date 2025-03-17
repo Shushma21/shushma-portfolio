@@ -22,7 +22,7 @@ export default function Portfolio() {
       title: 'Task Manager',
       description: 'A simple task management app with drag-and-drop features.',
       techStack: ['React', 'Firebase', 'CSS'],
-      link: '',  
+      link: 'https://shushma21.github.io/Task-Management/',  
       github: "https://github.com/Shushma21/Task-Management", 
       image: 'https://projectsly.com/images/task-management-system-screenshot-1.png?v=1691124479409199525',
     },
